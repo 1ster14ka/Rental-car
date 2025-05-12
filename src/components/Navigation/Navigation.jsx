@@ -1,11 +1,22 @@
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import css from "./Navigation.module.css";
+import clsx from "clsx";
 
 const Navigation = () => {
+  const buildLinkClass = ({ isActive }) => {
+    return clsx(css.link, isActive && css.active);
+  };
   return (
-    <header>
-      <img src="/public/RentalCar.svg" alt="" />
-      <NavLink to="/">Home</NavLink>
-      <NavLink to="/catalog">Catalog</NavLink>
+    <header className={css.header}>
+      <img src="/RentalCar.svg" alt="" />
+      <nav className={css.nav}>
+        <NavLink to="/" className={buildLinkClass}>
+          Home
+        </NavLink>
+        <NavLink to="/catalog" className={buildLinkClass}>
+          Catalog
+        </NavLink>
+      </nav>
     </header>
   );
 };

@@ -1,0 +1,39 @@
+.homeContainer {
+  font-family: var(--font-family);
+  background-image: url("/public/img/Picture.jpg");
+  min-height: 700px;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  padding-bottom: 60px;
+  color: var(--white);
+}
+
+.title {
+  font-weight: 700;
+  font-size: 60px;
+  line-height: 120%;
+  margin-bottom: 16px;
+}
+
+.subtitle {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 133%;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.btnCatalog {
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--white);
+  width: 276px;
+  height: 44px;
+  background: var(--button);
+  margin: 0 auto;
+}
