@@ -1,0 +1,9 @@
+.carList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 48px 32px;
+}
+
+.carItem {
+  flex-basis: calc((100% - 32px * 3) / 4);
+}

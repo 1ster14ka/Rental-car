@@ -1,0 +1,53 @@
+.carCardContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.carImg {
+  border-radius: 14px;
+  margin-bottom: 16px;
+}
+
+.carCardTitle {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.carCardTitle span {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 125%;
+  color: var(--main);
+}
+
+.cardBrand {
+  display: flex;
+}
+.model {
+  color: var(--button) !important;
+}
+
+.carAdress {
+  display: flex;
+  gap: 6px;
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 133%;
+  color: var(--gray);
+  margin-bottom: 4px;
+}
+
+.carAdress span:not(:last-child) {
+  padding-right: 6px;
+  border-right: 1px solid gray;
+}
+
+.btnCar {
+  background: var(--button);
+  border-radius: 12px;
+  height: 44px;
+  margin-top: 28px;
+}
