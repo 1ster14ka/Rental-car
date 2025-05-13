@@ -1,4 +1,12 @@
 import css from "./CarItem.module.css";
+import { FaRegHeart } from "react-icons/fa";
+import { FaHeart } from "react-icons/fa";
+import { useDispatch, useSelector } from "react-redux";
+import { favouriteSelect } from "../../redux/favourite/favouriteSelectors";
+import {
+  addToFavourite,
+  removeFromFavourite,
+} from "../../redux/favourite/favouriteSlice";
 
 const CarItem = ({
   car: {
@@ -14,12 +22,32 @@ const CarItem = ({
     mileage,
   },
 }) => {
-  const city = address.split(",")[1];
-  const country = address.split(",")[2];
+  const dispatch = useDispatch();
+  const favouriteCar = useSelector(favouriteSelect);
+
+  const isFavourite = favouriteCar.includes(id);
+  const [, city, country] = address.split(",");
+
+  function toggleFavourite(id) {
+    if (isFavourite) {
+      dispatch(removeFromFavourite(id));
+    } else {
+      dispatch(addToFavourite(id));
+    }
+  }
 
   return (
     <div className={css.carCardContainer}>
-      <img src={img} alt="" className={css.carImg} />
+      <div className={css.imgWrapp}>
+        <img src={img} alt="" className={css.carImg} />
+        <button onClick={() => toggleFavourite(id)}>
+          {!isFavourite ? (
+            <FaRegHeart className={`${css.icon} ${css.iconNotFavourite}`} />
+          ) : (
+            <FaHeart className={`${css.icon} ${css.iconFavourite}`} />
+          )}
+        </button>
+      </div>
       <div className={css.carCardTitle}>
         <div className={css.cardBrand}>
           <span>{brand}</span> <span className={css.model}>{model}</span>,
