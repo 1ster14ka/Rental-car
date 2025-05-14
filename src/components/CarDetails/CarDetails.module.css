@@ -1,0 +1,88 @@
+.carDetailsContainer {
+  padding: 84px 120px 0;
+  max-width: 1440px;
+  display: flex;
+  gap: 72px;
+}
+
+.carText {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 125%;
+  color: var(--main);
+}
+
+.imgWrapp {
+  width: 640px;
+  height: 512px;
+}
+
+.imgCar {
+  border-radius: 19px;
+}
+
+.infoCar {
+  margin-top: 20px;
+  max-width: 488px;
+  margin-bottom: 68px;
+}
+
+.nameCar {
+  font-family: var(--font-family);
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 133%;
+  color: var(--main);
+  margin-bottom: 8px;
+}
+
+.carLocationWrapp {
+  display: flex;
+  margin-bottom: 16px;
+}
+
+.miliage {
+  margin-left: 16px;
+}
+
+.carPrice {
+  font-family: var(--font-family);
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 133%;
+  color: var(--button);
+  margin-bottom: 32px;
+}
+
+.carParamsWrapp {
+  display: flex;
+  flex-direction: column;
+  gap: 110px;
+}
+
+.carTitle {
+  font-family: var(--font-family);
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 120%;
+  color: var(--main);
+}
+.carConditionWrapp {
+  display: flex;
+  gap: 8px;
+}
+
+.carTitleParams {
+  margin-bottom: 20px;
+}
+.carParamsContent {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.iconSetting {
+  width: 20px;
+  height: 26px;
+}

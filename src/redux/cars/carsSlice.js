@@ -16,11 +16,22 @@ const carSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(getAllCars.fulfilled, (state, action) => {
+        // const { page, cars } = action.payload;
         state.items = action.payload.cars;
+        // state.items = page === 1 ? cars : [...state.items, ...cars];
         state.page = action.payload.page;
         state.totalPages = action.payload.totalPages;
         state.totalCars = action.payload.totalCars;
         state.loading = false;
+        //   console.log(
+        //     "Загружены машины:",
+        //     cars.map((c) => c.id)
+        //   );
+        //   console.log(
+        //     "Текущие items:",
+        //     state.items.map((c) => c.id)
+        //   );
+        //   console.log("Текущая страница:", page);
       })
       .addCase(getAllCars.pending, (state) => {
         state.loading = true;

@@ -13,6 +13,7 @@ const CarCatalog = () => {
 
   const [searchParams, setSearchParams] = useSearchParams();
   const currentPage = Number(searchParams.get("page")) || 1;
+  // const limit = 12;
 
   const filters = {
     brand: searchParams.get("brand") || "",
@@ -59,7 +60,6 @@ const CarCatalog = () => {
                 return newParams;
               })
             }
-            className={css.btnNext}
           >
             Load more
           </button>

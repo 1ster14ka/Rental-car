@@ -7,6 +7,7 @@ import {
   addToFavourite,
   removeFromFavourite,
 } from "../../redux/favourite/favouriteSlice";
+import { NavLink } from "react-router-dom";
 
 const CarItem = ({
   car: {
@@ -65,7 +66,9 @@ const CarItem = ({
         <span>{type}</span>
         <span>{mileage}</span>
       </div>
-      <button className={css.btnCar}>Read more</button>
+      <NavLink to={`/catalog/${id}`} className={css.btnCar}>
+        <button className={css.btnReadMore}>Read more</button>
+      </NavLink>
     </div>
   );
 };
