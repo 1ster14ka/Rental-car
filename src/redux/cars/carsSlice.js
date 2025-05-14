@@ -10,7 +10,7 @@ const initialState = {
   error: false,
 };
 
-const slice = createSlice({
+const carSlice = createSlice({
   name: "cars",
   initialState,
   extraReducers: (builder) => {
@@ -32,5 +32,4 @@ const slice = createSlice({
       });
   },
 });
-
-export const carReducer = slice.reducer;
+export const carReducer = carSlice.reducer;

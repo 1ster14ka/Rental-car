@@ -1,22 +1,38 @@
 import { useDispatch, useSelector } from "react-redux";
-import { selectFilters } from "../../redux/filters/filtersSelector";
+import {
+  selectBrand,
+  selectMileageFrom,
+  selectMileageTo,
+  selectPrice,
+} from "../../redux/filters/filtersSelector";
 import { useEffect } from "react";
 import { getBrands } from "../../redux/filters/filtersOps";
-import { getAllCars } from "../../redux/cars/carsOps";
 import SelectBrand from "./SelectBrand";
 import SelectPrice from "./SelectPrice";
 import MileageRange from "./MileageRange";
 import css from "./FiltersForm.module.css";
+import { useSearchParams } from "react-router-dom";
 
 const FiltersForm = () => {
   const dispatch = useDispatch();
+  const [searchParams, setSearchParams] = useSearchParams();
 
-  const filters = useSelector(selectFilters);
+  const brand = useSelector(selectBrand);
+  const rentalPrice = useSelector(selectPrice);
+  const minMileage = useSelector(selectMileageFrom);
+  const maxMileage = useSelector(selectMileageTo);
 
-  //   console.log(brands);
   function handleSearch() {
-    dispatch(getAllCars(filters));
-    console.log(filters);
+    const newParams = new URLSearchParams();
+
+    if (brand) newParams.set("brand", brand);
+    if (rentalPrice) newParams.set("rentalPrice", rentalPrice);
+    if (minMileage) newParams.set("minMileage", minMileage);
+    if (maxMileage) newParams.set("maxMileage", maxMileage);
+
+    newParams.set("page", "1");
+
+    setSearchParams(newParams);
   }
 
   useEffect(() => {
