@@ -15,22 +15,15 @@ import { carReducer } from "./cars/carsSlice";
 import { filtersReducer } from "./filters/filtersSlice";
 import { favouriteReducer } from "./favourite/favouriteSlice";
 
-const persistConfig = {
-  key: "root",
-  version: 1,
-  storage,
-};
 const favouritesPersistConfig = {
   key: "favourites",
   version: 1,
   storage,
 };
 
-const persistedReducer = persistReducer(persistConfig, carReducer);
-
 export const store = configureStore({
   reducer: {
-    cars: persistedReducer,
+    cars: carReducer,
     filters: filtersReducer,
     favourites: persistReducer(favouritesPersistConfig, favouriteReducer),
   },

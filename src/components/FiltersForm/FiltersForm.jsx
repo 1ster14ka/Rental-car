@@ -19,6 +19,7 @@ const FiltersForm = () => {
 
   const brand = useSelector(selectBrand);
   const rentalPrice = useSelector(selectPrice);
+
   const minMileage = useSelector(selectMileageFrom);
   const maxMileage = useSelector(selectMileageTo);
 

@@ -8,7 +8,6 @@ export const getBrands = createAsyncThunk(
       const { data } = await axios.get(
         "https://car-rental-api.goit.global/brands"
       );
-      //   console.log(data);
 
       return data;
     } catch (err) {

@@ -12,6 +12,7 @@ import { NavLink } from "react-router-dom";
 const CarItem = ({
   car: {
     id,
+    description,
     img,
     brand,
     model,
@@ -40,7 +41,7 @@ const CarItem = ({
   return (
     <div className={css.carCardContainer}>
       <div className={css.imgWrapp}>
-        <img src={img} alt="" className={css.carImg} />
+        <img src={img} alt={description} className={css.carImg} />
         <button onClick={() => toggleFavourite(id)}>
           {!isFavourite ? (
             <FaRegHeart className={`${css.icon} ${css.iconNotFavourite}`} />

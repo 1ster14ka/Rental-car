@@ -8,30 +8,46 @@ const initialState = {
   page: 1,
   loading: false,
   error: false,
+  loadedPages: [],
 };
 
 const carSlice = createSlice({
   name: "cars",
   initialState,
+  reducers: {
+    resetCars: (state) => {
+      state.items = [];
+      state.loadedPages = [];
+      state.page = 1;
+      state.totalPages = 0;
+      state.totalCars = 0;
+      state.loading = false;
+      state.error = false;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(getAllCars.fulfilled, (state, action) => {
-        // const { page, cars } = action.payload;
-        state.items = action.payload.cars;
-        // state.items = page === 1 ? cars : [...state.items, ...cars];
+        const { page, cars } = action.payload;
+
+        // Если перезагрузка страницы, чтобы оставались те же карточки авто
+        const isPageAlreadyLoaded = state.loadedPages.includes(Number(page));
+        if (!isPageAlreadyLoaded) {
+          if (Number(page) === 1) {
+            state.items = cars;
+          } else {
+            state.items = [...JSON.parse(JSON.stringify(state.items)), ...cars];
+          }
+
+          state.loadedPages = [
+            ...JSON.parse(JSON.stringify(state.loadedPages)),
+            Number(page),
+          ];
+        }
         state.page = action.payload.page;
         state.totalPages = action.payload.totalPages;
         state.totalCars = action.payload.totalCars;
         state.loading = false;
-        //   console.log(
-        //     "Загружены машины:",
-        //     cars.map((c) => c.id)
-        //   );
-        //   console.log(
-        //     "Текущие items:",
-        //     state.items.map((c) => c.id)
-        //   );
-        //   console.log("Текущая страница:", page);
       })
       .addCase(getAllCars.pending, (state) => {
         state.loading = true;
@@ -43,4 +59,5 @@ const carSlice = createSlice({
       });
   },
 });
+export const { resetCars } = carSlice.actions;
 export const carReducer = carSlice.reducer;

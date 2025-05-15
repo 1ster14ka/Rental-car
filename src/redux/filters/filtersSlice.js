@@ -15,7 +15,7 @@ export const filtersSlice = createSlice({
   name: "filters",
   initialState,
   reducers: {
-    setBarnd(state, action) {
+    setBrand(state, action) {
       state.brand = action.payload;
     },
     setPrice(state, action) {
@@ -53,7 +53,7 @@ export const filtersSlice = createSlice({
 });
 
 export const {
-  setBarnd,
+  setBrand,
   setPrice,
   setMileageFrom,
   setMileageTo,

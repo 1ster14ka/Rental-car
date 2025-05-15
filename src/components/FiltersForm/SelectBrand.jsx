@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { selectBrand, selectBrands } from "../../redux/filters/filtersSelector";
-import { setBarnd } from "../../redux/filters/filtersSlice";
+import { setBrand } from "../../redux/filters/filtersSlice";
 import css from "./FiltersForm.module.css";
 
 const SelectBrand = () => {
@@ -16,7 +16,7 @@ const SelectBrand = () => {
         id=""
         className={css.select}
         value={selectedBrand}
-        onChange={(e) => dispatch(setBarnd(e.target.value))}
+        onChange={(e) => dispatch(setBrand(e.target.value))}
       >
         <option value="">Choose a brand</option>
         {brands.map((brand) => (
