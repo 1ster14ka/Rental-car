@@ -65,7 +65,7 @@ const CarItem = ({
       </div>
       <div className={css.carAdress}>
         <span>{type}</span>
-        <span>{mileage}</span>
+        <span>{mileage.toLocaleString("ru-RU")} km</span>
       </div>
       <NavLink to={`/catalog/${id}`} className={css.btnCar}>
         <button className={css.btnReadMore}>Read more</button>

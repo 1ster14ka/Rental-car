@@ -33,19 +33,41 @@ const CarCatalog = () => {
   const prevFilters = useRef("");
 
   useEffect(() => {
-    const filtersString = new URLSearchParams({
-      brand: filters.brand,
-      rentalPrice: filters.rentalPrice,
-      minMileage: filters.minMileage,
-      maxMileage: filters.maxMileage,
-    }).toString();
-
-    if (filtersString !== prevFilters.current) {
-      dispatch(resetCars());
-      prevFilters.current = filtersString;
-    }
     dispatch(getAllCars({ filters, page: currentPage }));
-  }, [dispatch, currentPage, searchParams.toString()]);
+  }, [dispatch, currentPage]);
+
+  const isFirstLoad = useRef(true);
+
+  useEffect(() => {
+    const filtersParams = new URLSearchParams({});
+    if (filters.brand) filtersParams.set("brand", filters.brand);
+    if (filters.rentalPrice)
+      filtersParams.set("rentalPrice", filters.rentalPrice);
+    if (!isNaN(filters.minMileage))
+      filtersParams.set("minMileage", filters.minMileage);
+    if (!isNaN(filters.maxMileage))
+      filtersParams.set("maxMileage", filters.maxMileage);
+
+    if (isFirstLoad.current) {
+      prevFilters.current = filtersParams.toString();
+      isFirstLoad.current = false;
+      return;
+    }
+
+    if (filtersParams.toString() !== prevFilters.current) {
+      dispatch(resetCars());
+      prevFilters.current = filtersParams.toString();
+      filtersParams.set("page", "1");
+      setSearchParams(filtersParams);
+      dispatch(getAllCars({ filters, page: 1 }));
+    }
+  }, [
+    filters.brand,
+    filters.rentalPrice,
+    filters.minMileage,
+    filters.maxMileage,
+  ]);
+
   return (
     <div>
       <ul className={css.carList}>
@@ -58,7 +80,7 @@ const CarCatalog = () => {
         })}
       </ul>
       <div className={css.btnWrapp}>
-        {currentPage >= 1 && currentPage < totalPages && (
+        {currentPage < totalPages && (
           <button
             onClick={() =>
               setSearchParams((prev) => {

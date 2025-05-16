@@ -28,10 +28,15 @@ const carSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(getAllCars.fulfilled, (state, action) => {
-        const { page, cars } = action.payload;
+        const { page, cars, totalPages } = action.payload;
 
         // Если перезагрузка страницы, чтобы оставались те же карточки авто
-        const isPageAlreadyLoaded = state.loadedPages.includes(Number(page));
+        let isPageAlreadyLoaded;
+
+        if (JSON.parse(JSON.stringify(totalPages))) {
+          isPageAlreadyLoaded = state.loadedPages.includes(Number(page));
+        }
+
         if (!isPageAlreadyLoaded) {
           if (Number(page) === 1) {
             state.items = cars;
@@ -45,7 +50,7 @@ const carSlice = createSlice({
           ];
         }
         state.page = action.payload.page;
-        state.totalPages = action.payload.totalPages;
+        state.totalPages = totalPages;
         state.totalCars = action.payload.totalCars;
         state.loading = false;
       })

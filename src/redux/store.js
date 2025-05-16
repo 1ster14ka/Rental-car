@@ -15,15 +15,24 @@ import { carReducer } from "./cars/carsSlice";
 import { filtersReducer } from "./filters/filtersSlice";
 import { favouriteReducer } from "./favourite/favouriteSlice";
 
+const carsPersistConfig = {
+  key: "cars",
+  version: 1,
+  storage,
+  whitelist: ["items", "loadedPages"],
+};
+
 const favouritesPersistConfig = {
   key: "favourites",
   version: 1,
   storage,
 };
 
+const persistedReducer = persistReducer(carsPersistConfig, carReducer);
+
 export const store = configureStore({
   reducer: {
-    cars: carReducer,
+    cars: persistedReducer,
     filters: filtersReducer,
     favourites: persistReducer(favouritesPersistConfig, favouriteReducer),
   },

@@ -1,12 +1,57 @@
-# React + Vite
+CarCatalog
+🚗 Описание проекта
+CarCatalog — это современное веб-приложение для просмотра и фильтрации автомобилей. Пользователи могут просматривать автомобили по категориям, фильтровать по бренду, цене аренды, пробегу, а также добавлять понравившиеся авто в избранное. Удобная пагинация позволяет подгружать больше машин по кнопке "Load more".
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+⚙️ Основные функции
+📄 Отображение списка автомобилей с подробной информацией
 
-Currently, two official plugins are available:
+🔍 Фильтрация по:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+бренду (brand)
 
-## Expanding the ESLint configuration
+цене аренды (rental price)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+минимальному и максимальному пробегу (mileage)
+
+❤️ Добавление/удаление автомобилей в избранное (favourites)
+
+📄 Пагинация: кнопка "Load more" с учётом активных фильтров
+
+🌐 Синхронизация фильтров с URL (searchParams)
+
+🧼 Автоматическое форматирование чисел пробега с пробелами (например, 5 000 km)
+
+🛠 Технологии
+React + React Router
+
+Redux Toolkit для управления состоянием
+
+React Icons (иконки Like)
+
+CSS Modules
+
+REST API (эмуляция запросов)
+
+🧪 Как запустить
+Клонируй репозиторий:
+
+bash
+Копировать
+Редактировать
+git clone https://github.com/1ster14ka/test-task-frontend.git
+
+Установи зависимости:
+
+npm install
+
+Запусти в режиме разработки:
+
+npm run dev
+
+Открой в браузере:
+
+http://localhost:5173
+
+👤 Автор
+
+Разработано с ❤️ украинским разработчиком.

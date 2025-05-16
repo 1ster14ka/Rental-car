@@ -21,7 +21,9 @@ const CarMainInfo = ({
           <IoLocationOutline />
           <p className={css.carText}>
             {city}, {country}
-            <span className={css.miliage}>Mileage: {mileage}km</span>
+            <span className={css.miliage}>
+              Mileage: {mileage.toLocaleString("ru-RU")}km
+            </span>
           </p>
         </div>
 
