@@ -32,3 +32,8 @@
   width: 156px;
   height: 44px;
 }
+
+.emptyMessage {
+  display: flex;
+  justify-content: center;
+}

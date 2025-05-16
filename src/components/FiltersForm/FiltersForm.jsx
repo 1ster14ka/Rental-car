@@ -12,6 +12,13 @@ import SelectPrice from "./SelectPrice";
 import MileageRange from "./MileageRange";
 import css from "./FiltersForm.module.css";
 import { useSearchParams } from "react-router-dom";
+import {
+  resetFilters,
+  setBrand,
+  setMileageFrom,
+  setMileageTo,
+  setPrice,
+} from "../../redux/filters/filtersSlice";
 
 const FiltersForm = () => {
   const dispatch = useDispatch();
@@ -38,7 +45,20 @@ const FiltersForm = () => {
 
   useEffect(() => {
     dispatch(getBrands());
-  }, [dispatch]);
+    const brandParam = searchParams.get("brand");
+    const priceParam = searchParams.get("rentalPrice");
+    const minMileageParam = searchParams.get("minMileage");
+    const maxMileageParam = searchParams.get("maxMileage");
+    if (!brandParam && !priceParam && !minMileageParam && !maxMileageParam) {
+      dispatch(resetFilters());
+      return;
+    }
+
+    if (brandParam) dispatch(setBrand(brandParam));
+    if (priceParam) dispatch(setPrice(priceParam));
+    if (minMileageParam) dispatch(setMileageFrom(Number(minMileageParam)));
+    if (maxMileageParam) dispatch(setMileageTo(Number(maxMileageParam)));
+  }, [dispatch, searchParams]);
 
   return (
     <div className={css.filterFormContainer}>

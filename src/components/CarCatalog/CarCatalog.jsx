@@ -34,7 +34,14 @@ const CarCatalog = () => {
 
   useEffect(() => {
     dispatch(getAllCars({ filters, page: currentPage }));
-  }, [dispatch, currentPage]);
+  }, [
+    dispatch,
+    currentPage,
+    filters.brand,
+    filters.rentalPrice,
+    filters.minMileage,
+    filters.maxMileage,
+  ]);
 
   const isFirstLoad = useRef(true);
 
@@ -70,15 +77,19 @@ const CarCatalog = () => {
 
   return (
     <div>
-      <ul className={css.carList}>
-        {visibleCars.map((car) => {
-          return (
+      {visibleCars.length === 0 ? (
+        <p className={css.emptyMessage}>
+          Ничего не найдено по заданным фильтрам.
+        </p>
+      ) : (
+        <ul className={css.carList}>
+          {visibleCars.map((car) => (
             <li key={car.id} className={css.carItem}>
               <CarItem car={car} />
             </li>
-          );
-        })}
-      </ul>
+          ))}
+        </ul>
+      )}
       <div className={css.btnWrapp}>
         {currentPage < totalPages && (
           <button
