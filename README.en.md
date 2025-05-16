@@ -33,9 +33,10 @@ CSS Modules
 REST API (request emulation)
 
 🧪 Getting Started
+
 Clone the repository:
 
-git clone https://github.com/1ster14ka/test-task-frontend.git
+git clone https://github.com/1ster14ka/Rental-car.git
 
 Install dependencies:
 
